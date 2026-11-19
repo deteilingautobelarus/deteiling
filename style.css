@@ -18,23 +18,13 @@ body {
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes goldPulse {
-    0%, 100% {
-        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.22);
-    }
-    50% {
-        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
-    }
+    0%, 100% { box-shadow: 0 6px 20px rgba(212, 175, 55, 0.22); }
+    50% { box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45); }
 }
 
 #container {
@@ -43,6 +33,7 @@ body {
     margin: 0;
 }
 
+/* Верхняя строка контактов/соцсетей */
 #top-bar {
     background-color: #090a0d;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -65,6 +56,7 @@ body {
     color: #f3d27a;
 }
 
+/* Навигационное меню */
 #menu {
     background-color: rgba(11, 13, 17, 0.92);
     backdrop-filter: blur(12px);
@@ -81,26 +73,22 @@ body {
     z-index: 100;
 }
 
-/* =========================================
-   ИЗМЕНЕННЫЙ ЛОГОТИП (БЕЗ ГРАДИЕНТА)
-   ========================================= */
 .brand-logo {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #ffffff; /* Чистый белый цвет */
+    color: #ffffff;
     text-decoration: none;
     flex-shrink: 0;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .brand-logo:hover {
-    color: #f3d27a; /* Золотой при наведении */
+    color: #f3d27a;
     text-shadow: 0 0 15px rgba(243, 210, 122, 0.4);
 }
-/* ========================================= */
 
 .nav-links {
     display: flex;
@@ -142,6 +130,7 @@ body {
     width: 70%;
 }
 
+/* Баннер на главной */
 .hero-banner {
     position: relative;
     width: 100%;
@@ -156,13 +145,13 @@ body {
 
 .hero-car {
     position: absolute;
-    left: 52%;
-    top: 52%;
+    left: 60%; /* Сдвинули правее */
+    top: 50%;
     transform: translate(-50%, -50%);
     width: auto;
-    max-width: 78%;
-    max-height: 86%;
-    object-fit: contain;
+    max-width: 85%;
+    max-height: 90%;
+    object-fit: cover; /* Чтобы обрезать черные грани */
     margin: 0;
     border: none;
     border-radius: 0;
@@ -281,6 +270,7 @@ body {
     box-shadow: 0 10px 24px rgba(212, 175, 55, 0.35);
 }
 
+/* Основной контент */
 #content {
     width: 100%;
     max-width: 1480px;
@@ -545,29 +535,77 @@ tr:hover {
     margin-top: 70px;
 }
 
+/* =========================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ (max-width: 900px)
+   ========================================= */
 @media (max-width: 900px) {
     #top-bar, #menu, #content, .hero-inner {
         padding-left: 18px;
         padding-right: 18px;
     }
-    .hero-banner {
-        min-height: 460px;
+
+    /* Делаем меню свайпаемым */
+    #menu {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
+
+    .nav-links {
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    #menu a.nav-item {
+        flex-shrink: 0;
+    }
+
+    /* Баннер */
+    .hero-banner {
+        min-height: 500px;
+    }
+
     .hero-car {
         left: 50%;
-        top: 46%;
-        max-width: 92%;
+        top: 40%;
+        max-width: 100%;
         max-height: 55%;
+        opacity: 0.4; /* Затемняем машину, чтобы текст читался */
     }
+
     .hero-bottom {
         flex-direction: column;
         align-items: flex-start;
     }
-    #menu {
-        position: static;
-        justify-content: center;
+
+    .hero-heading {
+        font-size: 32px;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9); /* Усиливаем тень для читаемости */
     }
-    .nav-links {
-        justify-content: center;
+
+    .hero-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Формы */
+    .form-box input, .form-box select {
+        font-size: 16px; /* Чтобы iPhone не делал зум */
+    }
+
+    /* Таблицы */
+    .table-wrap {
+        margin: 0 -18px;
+        padding: 0 18px;
+        border-radius: 0;
     }
 }
