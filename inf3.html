@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Оклейка плёнкой — DETAILING CENTER</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="top-bar">
+            <a href="tel:+375296757070">+375 (29) 675-70-70</a>
+            <a href="https://t.me/tsishkovv" target="_blank" rel="noopener">Telegram</a>
+            <a href="inf4.html">Запись онлайн</a>
+        </div>
+
+        <div id="menu">
+            <a href="glavnaya.html" class="brand-logo">Detailing Center</a>
+            <div class="nav-links">
+                <a href="glavnaya.html" class="nav-item">Главная</a>
+                <a href="inf1.html" class="nav-item">Полировка</a>
+                <a href="inf2.html" class="nav-item">Химчистка</a>
+                <a href="inf3.html" class="nav-item">Оклейка плёнкой</a>
+                <a href="inf4.html" class="nav-item">Работы и Запись</a>
+               
+            </div>
+        </div>
+
+        <div id="content">
+            <h2>Надежный щит против сколов и дорожного гравия</h2>
+            <p>Даже самая аккуратная езда по трассе или городу неизбежно приводит к повреждениям кузова: летящие из-под колес камни оставляют сколы на капоте, пескоструит бампер, а на парковке легко получить царапину от чужой двери.</p>
+            <p>Единственным по-настоящему эффективным решением является бронирование автомобиля прозрачной полиуретановой плёнкой (PPF — Paint Protection Film). Плёнка толщиной 200 микрон поглощает энергию ударов камней и обладает уникальным свойством самовосстановления: мелкие царапины исчезают с её поверхности под воздействием тепла солнечных лучей или горячей воды.</p>
+
+            <img src="files/ppf.jpg" alt="Процесс оклейки автомобиля защитной плёнкой">
+
+            <h3>Преимущества полиуретановой защиты:</h3>
+            <ul>
+                <li><b>Абсолютная прозрачность:</b> плёнка совершенно незаметна на кузове, не желтеет со временем и сохраняет заводской цвет автомобиля.</li>
+                <li><b>Защита от реагентов и химии:</b> предотвращает коррозию металла при повреждении лака и защищает от агрессивной зимней соли.</li>
+                <li><b>Лёгкий демонтаж:</b> плёнка снимается без остатков клея и следов даже спустя 5–7 лет эксплуатации.</li>
+            </ul>
+
+            <h2>Актуальный прайс-лист (Оклейка плёнкой)</h2>
+            <p class="status-note" id="sync-status-3">Цены синхронизированы в реальном времени.</p>
+
+            <div class="table-wrap">
+                <table id="price-table-3">
+                    <thead>
+                        <tr>
+                            <th>Пакет оклейки</th>
+                            <th>Срок</th>
+                            <th>Стоимость (BYN)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-body-3">
+                        <tr><td>Оклейка оптики (передние фары + ПТФ)</td><td>1.5 часа</td><td>от 140 руб.</td></tr>
+                        <tr><td>Пакет «Зоны риска» (бампер, капот, крылья, фары, стойки)</td><td>1–2 дня</td><td>от 1 450 руб.</td></tr>
+                        <tr><td>Полная оклейка кузова глянцевым полиуретаном</td><td>3–4 дня</td><td>от 4 200 руб.</td></tr>
+                        <tr><td>Оклейка матовым сатиновым полиуретаном</td><td>3–4 дня</td><td>от 4 500 руб.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="inf4.html" class="btn">Рассчитать стоимость оклейки</a>
+        </div>
+
+        <div id="footer">
+            &copy; 2026 Detailing Center. Все права защищены. Vadim Tsishkov.
+        </div>
+    </div>
+
+    <script>
+        function parseCSV(text) {
+            const rows = []; let cur = "", row = [], inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (inQuotes) {
+                    if (ch === '"' && text[i + 1] === '"') { cur += '"'; i++; }
+                    else if (ch === '"') inQuotes = false;
+                    else cur += ch;
+                } else {
+                    if (ch === '"') inQuotes = true;
+                    else if (ch === ',') { row.push(cur); cur = ""; }
+                    else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ""; }
+                    else if (ch !== '\r') cur += ch;
+                }
+            }
+            if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
+            return rows;
+        }
+
+        const SHEET_CSV_URL_3 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXIrsgbwZ1BW5C8sbO_uk4iXbSxVGvqFFsBadSBDZ5SO2kUPIpBjxu3OwofpSOs2RAfj7T4VpeUKDL/pub?gid=36026053&single=true&output=csv";
+        if (SHEET_CSV_URL_3) {
+            fetch(SHEET_CSV_URL_3)
+                .then(r => r.text())
+                .then(csv => {
+                    const rows = parseCSV(csv).filter(r => r.length >= 3 && r[0].trim() !== "");
+                    const tbody = document.getElementById("price-body-3");
+                    tbody.innerHTML = "";
+                    rows.slice(1).forEach(cols => {
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td>`;
+                        tbody.appendChild(tr);
+                    });
+                    document.getElementById("sync-status-3").textContent = "Цены успешно загружены из Google Таблиц.";
+                })
+                .catch(() => {
+                    document.getElementById("sync-status-3").textContent = "Не удалось загрузить цены — показаны базовые.";
+                });
+        }
+    </script>
+</body>
+</html>

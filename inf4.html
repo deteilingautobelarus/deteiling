@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Работы и Запись — DETAILING CENTER</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="top-bar">
+            <a href="tel:+375296757070">+375 (29) 675-70-70</a>
+            <a href="https://t.me/tsishkovv" target="_blank" rel="noopener">Telegram</a>
+            <a href="inf4.html">Запись онлайн</a>
+        </div>
+
+        <div id="menu">
+            <a href="glavnaya.html" class="brand-logo">Detailing Center</a>
+            <div class="nav-links">
+                <a href="glavnaya.html" class="nav-item">Главная</a>
+                <a href="inf1.html" class="nav-item">Полировка</a>
+                <a href="inf2.html" class="nav-item">Химчистка</a>
+                <a href="inf3.html" class="nav-item">Оклейка плёнкой</a>
+                <a href="inf4.html" class="nav-item">Работы и Запись</a>
+                
+            </div>
+        </div>
+
+        <div id="content">
+            <!-- БЛОК ЗАПИСИ ПОДНЯТ НАВЕРХ -->
+            <h2>Записаться на консультацию или осмотр</h2>
+            <p>Заполните форму ниже, и наш мастер свяжется с вами в течение 15 минут для уточнения деталей и подбора удобного времени визита.</p>
+
+            <div class="form-box">
+                <form id="booking-form">
+                    <label for="f-name">Ваше имя:</label>
+                    <input type="text" id="f-name" name="name" placeholder="Например: Александр" required>
+
+                    <label for="f-car">Марка и модель автомобиля:</label>
+                    <input type="text" id="f-car" name="car" placeholder="Например: Audi Q7" required>
+
+                    <label for="f-phone">Номер телефона для связи:</label>
+                    <input type="tel" id="f-phone" name="phone" placeholder="+375 (29) 000-00-00" required>
+
+                    <label for="f-service">Интересующая услуга:</label>
+                    <select id="f-service" name="service">
+                        <option>Восстановительная полировка и керамика</option>
+                        <option>Детейлинг-химчистка салона</option>
+                        <option>Антигравийная оклейка плёнкой</option>
+                        <option>Комплекс (Кузов + Салон + Плёнка)</option>
+                    </select>
+
+                    <button type="submit" class="btn">Отправить заявку</button>
+                    <p id="form-status"></p>
+                </form>
+            </div>
+
+            <h2>Наши контакты и адрес студии</h2>
+            <ul>
+                <li><b>Адрес студии:</b> г. Минск, ул. Автомобильная, 15 (охраняемый бокс №4)</li>
+                <li><b>Телефон / Telegram / Viber:</b> +375 (29) 675-70-70</li>
+                <li><b>Время работы:</b> Понедельник — Суббота: с 09:00 до 21:00 (Воскресенье — выходной)</li>
+            </ul>
+
+            <!-- ГАЛЕРЕЯ РАБОТ ПЕРЕМЕЩЕНА ВНИЗ -->
+            <h2>Галерея наших работ</h2>
+            <p>Каждый автомобиль, попадающий в нашу студию, проходит строгий контроль качества на каждом этапе детейлинга.</p>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <img src="files/work1.jpg" alt="BMW 5 Series">
+                    <h4>BMW 5 Series (G30)</h4>
+                    <p>Проведена восстановительная абразивная полировка кузова и нанесено 2 слоя премиальной нанокерамики. Глубокий зеркальный глянец.</p>
+                </div>
+                <div class="card">
+                    <img src="files/work2.jpg" alt="Porsche Cayenne">
+                    <h4>Porsche Cayenne</h4>
+                    <p>Полная оклейка кузова премиальным матовым полиуретаном + комплексная глубокая химчистка интерьера.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            &copy; 2026 Detailing Center. Все права защищены. Vadim Tsishkov.
+        </div>
+    </div>
+
+    <script>
+        const TG_BOT_TOKEN = "9184932088:AAGG-EoAxKA4VlMPdlhJykwjXIsCxYE_PIY";
+        const TG_CHAT_ID   = "1920609276";
+
+        const form   = document.getElementById("booking-form");
+        const status = document.getElementById("form-status");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name    = document.getElementById("f-name").value.trim();
+            const car     = document.getElementById("f-car").value.trim();
+            const phone   = document.getElementById("f-phone").value.trim();
+            const service = document.getElementById("f-service").value;
+
+            if (!name || !car || !phone) {
+                status.textContent = "Пожалуйста, заполните все поля.";
+                status.style.color = "#f3d27a";
+                return;
+            }
+
+            if (TG_BOT_TOKEN.startsWith("ВСТАВЬ") || TG_CHAT_ID.startsWith("ВСТАВЬ")) {
+                status.textContent = "⚠️ Токен бота не настроен. Впиши TG_BOT_TOKEN и TG_CHAT_ID в код.";
+                status.style.color = "#f3d27a";
+                return;
+            }
+
+            const text =
+                "🚗 *НОВАЯ ЗАЯВКА — Detailing Center*\n\n" +
+                "👤 *Имя:* " + name + "\n" +
+                "🚙 *Авто:* " + car + "\n" +
+                "📞 *Телефон:* " + phone + "\n" +
+                "🛠 *Услуга:* " + service + "\n" +
+                "🕒 *Время:* " + new Date().toLocaleString("ru-RU");
+
+            status.textContent = "Отправляем заявку...";
+            status.style.color = "#9e998e";
+
+            fetch("https://api.telegram.org/bot" + TG_BOT_TOKEN + "/sendMessage", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: TG_CHAT_ID,
+                    text: text,
+                    parse_mode: "Markdown"
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    status.textContent = "✅ Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+                    status.style.color = "#7ee787";
+                    form.reset();
+                } else {
+                    status.textContent = "❌ Ошибка отправки: " + (data.description || "неизвестная ошибка");
+                    status.style.color = "#ff7b72";
+                }
+            })
+            .catch(() => {
+                status.textContent = "❌ Не удалось связаться с Telegram. Проверьте интернет и запустите сайт через сервер (не file://).";
+                status.style.color = "#ff7b72";
+            });
+        });
+    </script>
+</body>
+</html>

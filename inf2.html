@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Химчистка салона — DETAILING CENTER</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="top-bar">
+            <a href="tel:+375296757070">+375 (29) 675-70-70</a>
+            <a href="https://t.me/tsishkovv" target="_blank" rel="noopener">Telegram</a>
+            <a href="inf4.html">Запись онлайн</a>
+        </div>
+
+        <div id="menu">
+            <a href="glavnaya.html" class="brand-logo">Detailing Center</a>
+            <div class="nav-links">
+                <a href="glavnaya.html" class="nav-item">Главная</a>
+                <a href="inf1.html" class="nav-item">Полировка</a>
+                <a href="inf2.html" class="nav-item">Химчистка</a>
+                <a href="inf3.html" class="nav-item">Оклейка плёнкой</a>
+                <a href="inf4.html" class="nav-item">Работы и Запись</a>
+                
+            </div>
+        </div>
+
+        <div id="content">
+            <h2>Чистота и микроклимат внутри автомобиля</h2>
+            <p>Каждый день салон автомобиля подвергается серьезным испытаниям: пыль с улицы, шерсть домашних животных, следы от пролитого кофе и износ кожи на водительском сиденье. Обычная влажная уборка лишь загоняет грязь глубже в поры текстиля и кожи.</p>
+            <p>Профессиональная детейлинг-химчистка подразумевает полную глубокую реставрацию интерьера с использованием мощных моющих пылесосов, торнадоров, парогенераторов и сертифицированной гипоаллергенной химии, безопасной для детей и людей с аллергией.</p>
+
+            <img src="files/salon.jpg" alt="Процесс химчистки кожаного салона">
+
+            <h3>Пошаговый регламент химчистки:</h3>
+            <ol>
+                <li><b>Тщательный вакуумный сбор</b> пыли, песка и мелкого мусора в труднодоступных местах (салазки сидений, карманы дверей, воздуховоды).</li>
+                <li><b>Деликатная чистка потолка</b> и солнцезащитных козырьков щадящими пенными составами без риска отслоения ткани.</li>
+                <li><b>Глубокая обработка сидений</b> (кожаных, текстильных или комбинированных) с удалением сложных въевшихся пятен.</li>
+                <li><b>Кондиционирование и питание кожи</b> специальными кремами, восстанавливающими мягкость и предотвращающими появление трещин.</li>
+                <li><b>Финишное озонирование салона</b> для уничтожения болезнетворных бактерий, грибка в системе кондиционирования и стойких запахов (табака, еды).</li>
+            </ol>
+
+            <h2>Актуальный прайс-лист (Химчистка салона)</h2>
+            <p class="status-note" id="sync-status-2">Цены синхронизированы в реальном времени.</p>
+
+            <div class="table-wrap">
+                <table id="price-table-2">
+                    <thead>
+                        <tr>
+                            <th>Класс автомобиля / Услуга</th>
+                            <th>Время работы</th>
+                            <th>Стоимость (BYN)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-body-2">
+                        <tr><td>Комплексная химчистка (Седан / Хэтчбек)</td><td>1 день</td><td>320 руб.</td></tr>
+                        <tr><td>Комплексная химчистка (Кроссовер)</td><td>1 день</td><td>380 руб.</td></tr>
+                        <tr><td>Комплексная химчистка (Внедорожник / Минивэн)</td><td>1–2 дня</td><td>450 руб.</td></tr>
+                        <tr><td>Озонирование и антибактериальная обработка</td><td>1 час</td><td>60 руб.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="inf4.html" class="btn">Записаться на химчистку</a>
+        </div>
+
+        <div id="footer">
+            &copy; 2026 Detailing Center. Все права защищены. Vadim Tsishkov.
+        </div>
+    </div>
+
+    <script>
+        function parseCSV(text) {
+            const rows = []; let cur = "", row = [], inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (inQuotes) {
+                    if (ch === '"' && text[i + 1] === '"') { cur += '"'; i++; }
+                    else if (ch === '"') inQuotes = false;
+                    else cur += ch;
+                } else {
+                    if (ch === '"') inQuotes = true;
+                    else if (ch === ',') { row.push(cur); cur = ""; }
+                    else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ""; }
+                    else if (ch !== '\r') cur += ch;
+                }
+            }
+            if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
+            return rows;
+        }
+
+        const SHEET_CSV_URL_2 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXIrsgbwZ1BW5C8sbO_uk4iXbSxVGvqFFsBadSBDZ5SO2kUPIpBjxu3OwofpSOs2RAfj7T4VpeUKDL/pub?gid=759680424&single=true&output=csv";
+        if (SHEET_CSV_URL_2) {
+            fetch(SHEET_CSV_URL_2)
+                .then(r => r.text())
+                .then(csv => {
+                    const rows = parseCSV(csv).filter(r => r.length >= 3 && r[0].trim() !== "");
+                    const tbody = document.getElementById("price-body-2");
+                    tbody.innerHTML = "";
+                    rows.slice(1).forEach(cols => {
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td>`;
+                        tbody.appendChild(tr);
+                    });
+                    document.getElementById("sync-status-2").textContent = "Цены успешно загружены из Google Таблиц.";
+                })
+                .catch(() => {
+                    document.getElementById("sync-status-2").textContent = "Не удалось загрузить цены — показаны базовые.";
+                });
+        }
+    </script>
+</body>
+</html>

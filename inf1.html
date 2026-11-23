@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Полировка и Керамика — DETAILING CENTER</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="top-bar">
+            <a href="tel:+375296757070">+375 (29) 675-70-70</a>
+            <a href="https://t.me/tsishkovv" target="_blank" rel="noopener">Telegram</a>
+            <a href="inf4.html">Запись онлайн</a>
+        </div>
+
+        <div id="menu">
+            <a href="glavnaya.html" class="brand-logo">Detailing Center</a>
+            <div class="nav-links">
+                <a href="glavnaya.html" class="nav-item">Главная</a>
+                <a href="inf1.html" class="nav-item">Полировка</a>
+                <a href="inf2.html" class="nav-item">Химчистка</a>
+                <a href="inf3.html" class="nav-item">Оклейка плёнкой</a>
+                <a href="inf4.html" class="nav-item">Работы и Запись</a>
+                
+            </div>
+        </div>
+
+        <div id="content">
+            <h2>Откуда появился детейлинг: краткая история</h2>
+            <p>Индустрия ухода за автомобилями зародилась в Южной Калифорнии (США) в начале XX века. Первые составы для блеска кузова варили вручную из натурального карнаубского воска. Однако настоящий прорыв произошел в конце 1960-х годов, когда автолюбители и коллекционеры ретро-каров потребовали принципиально нового уровня чистоты для престижных выставок.</p>
+            <p>Современный автодетейлинг сформировался как отдельная высокоточная наука с появлением цифровых измерителей толщины лакокрасочного покрытия, роторо-орбитальных полировальных машин и жидких кварцевых (керамических) соединений на основе диоксида кремния.</p>
+
+            <img src="files/polish.jpg" alt="Процесс полировки автомобиля в студии">
+
+            <h2>Технология восстановления лакокрасочного покрытия</h2>
+            <p>Каждый автомобиль имеет индивидуальную толщину лака (обычно от 90 до 150 микрон). Перед началом работ мастера нашей студии проводят детальный замер на каждой кузовной детали с помощью высокоточного электронного толщиномера.</p>
+
+            <h3>Этапы полировки:</h3>
+            <ol>
+                <li><b>Двухфазная бесконтактная мойка</b> и глубокая очистка кузова специальной детейлинг-глиной от битума, смолы и металлических вкраплений.</li>
+                <li><b>Маскировка уязвимых зон</b> (хромированных элементов, уплотнителей и пластика) малярной лентой для предотвращения повреждений.</li>
+                <li><b>Абразивная (черновая) полировка</b> с использованием крупнозернистых паст для удаления глубоких царапин и рисок.</li>
+                <li><b>Финишная антиголограммная полировка</b> мягкими кругами для достижения безупречного зеркального глянца и глубины цвета.</li>
+                <li><b>Обезжиривание поверхности</b> и нанесение защитного керамического слоя для консервации результата.</li>
+            </ol>
+
+            <h2>Актуальный прайс-лист (Полировка и Керамика)</h2>
+            <p class="status-note" id="sync-status-1">Цены синхронизированы в реальном времени.</p>
+
+            <div class="table-wrap">
+                <table id="price-table-1">
+                    <thead>
+                        <tr>
+                            <th>Наименование услуги</th>
+                            <th>Срок выполнения</th>
+                            <th>Стоимость (BYN)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-body-1">
+                        <tr><td>Лёгкая освежающая полировка кузова</td><td>1 день</td><td>от 350 руб.</td></tr>
+                        <tr><td>Глубокая восстановительная полировка</td><td>1–2 дня</td><td>от 500 руб.</td></tr>
+                        <tr><td>Нанесение керамического состава (2 слоя)</td><td>1 день</td><td>от 600 руб.</td></tr>
+                        <tr><td>Гидрофобное покрытие «Антидождь» (все стёкла)</td><td>1 час</td><td>от 90 руб.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="inf4.html" class="btn">Записаться на полировку</a>
+        </div>
+
+        <div id="footer">
+            &copy; 2026 Detailing Center. Все права защищены. Vadim Tsishkov.
+        </div>
+    </div>
+
+    <script>
+        function parseCSV(text) {
+            const rows = []; let cur = "", row = [], inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (inQuotes) {
+                    if (ch === '"' && text[i + 1] === '"') { cur += '"'; i++; }
+                    else if (ch === '"') inQuotes = false;
+                    else cur += ch;
+                } else {
+                    if (ch === '"') inQuotes = true;
+                    else if (ch === ',') { row.push(cur); cur = ""; }
+                    else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ""; }
+                    else if (ch !== '\r') cur += ch;
+                }
+            }
+            if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
+            return rows;
+        }
+
+        const SHEET_CSV_URL_1 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXIrsgbwZ1BW5C8sbO_uk4iXbSxVGvqFFsBadSBDZ5SO2kUPIpBjxu3OwofpSOs2RAfj7T4VpeUKDL/pub?gid=0&single=true&output=csv";
+        if (SHEET_CSV_URL_1) {
+            fetch(SHEET_CSV_URL_1)
+                .then(r => r.text())
+                .then(csv => {
+                    const rows = parseCSV(csv).filter(r => r.length >= 3 && r[0].trim() !== "");
+                    const tbody = document.getElementById("price-body-1");
+                    tbody.innerHTML = "";
+                    rows.slice(1).forEach(cols => {
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td>`;
+                        tbody.appendChild(tr);
+                    });
+                    document.getElementById("sync-status-1").textContent = "Цены успешно загружены из Google Таблиц.";
+                })
+                .catch(() => {
+                    document.getElementById("sync-status-1").textContent = "Не удалось загрузить цены — показаны базовые.";
+                });
+        }
+    </script>
+</body>
+</html>
